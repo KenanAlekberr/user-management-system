@@ -33,6 +33,7 @@ Added intentionally to show extra backend skills:
 - JWT Access & Refresh tokens
 - BCrypt password hashing
 - Login / Logout
+- Forgot / Reset / Change password
 - Token blacklist with Redis (logout)
 - Refresh token rotation
 - Secure endpoints with Spring Security
