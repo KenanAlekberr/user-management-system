@@ -25,6 +25,6 @@ public class LoginRequest {
     String email;
 
     @NotBlank(message = "Password cannot be blank")
-    @Size(min = 6, max = 50, message = "Password must be between 6 and 50 characters")
+    @Size(min = 6, max = 255, message = "Password must be between 6 and 255 characters")
     String password;
 }

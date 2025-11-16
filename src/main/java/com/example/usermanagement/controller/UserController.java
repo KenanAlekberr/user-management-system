@@ -30,10 +30,10 @@ import static org.springframework.http.HttpStatus.OK;
 public class UserController {
     UserService userService;
 
-    @GetMapping
+    @GetMapping("/getAll")
     public PaginationResponse<UserResponse> getAllUsers(
-            @RequestParam int page,
-            @RequestParam int size,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName) {
         return userService.getAllUsers(page, size, firstName, lastName);

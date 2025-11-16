@@ -17,16 +17,16 @@ import static lombok.AccessLevel.PRIVATE;
 public class ChangePasswordRequest {
     @NotNull(message = "Password cannot be null")
     @NotBlank(message = "Password cannot be blank")
-    @Size(min = 6, max = 50, message = "Password must be between 6 and 50 characters")
+    @Size(min = 6, max = 255, message = "Password must be between 6 and 255 characters")
     String oldPassword;
 
     @NotNull(message = "Password cannot be null")
     @NotBlank(message = "Password cannot be blank")
-    @Size(min = 6, max = 50, message = "Password must be between 6 and 50 characters")
+    @Size(min = 6, max = 255, message = "Password must be between 6 and 255 characters")
     String newPassword;
 
     @NotNull(message = "Password cannot be null")
     @NotBlank(message = "Password cannot be blank")
-    @Size(min = 6, max = 50, message = "Password must be between 6 and 50 characters")
+    @Size(min = 6, max = 255, message = "Password must be between 6 and 255 characters")
     String confirmPassword;
 }
