@@ -52,13 +52,16 @@ public class UserServiceImpl implements UserService {
 
         Page<UserEntity> userPage = userRepository.findAll(spec, pageable);
 
-        List<UserResponse> content = userPage.getContent()
+        List<UserResponse> userResponses = userPage.getContent()
                 .stream()
                 .map(USER_MAPPER::buildUserResponse)
                 .toList();
 
+        if (userResponses.isEmpty())
+            throw new NotFoundException(USER_NOT_FOUND.getCode(), USER_NOT_FOUND.getMessage());
+
         PaginationResponse<UserResponse> response = PaginationResponse.<UserResponse>builder()
-                .content(content)
+                .content(userResponses)
                 .totalElements(userPage.getTotalElements())
                 .totalPages(userPage.getTotalPages())
                 .hasNext(userPage.hasNext())
