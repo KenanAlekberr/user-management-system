@@ -25,15 +25,28 @@ public class RedisConfigWithRedisson {
     @Value("${spring.data.redis.password}")
     String redisPassword;
 
+//    @Bean(destroyMethod = "shutdown")
+//    public RedissonClient redissonClient() {
+//        Config config = new Config();
+//        String redisUrl = "redis://" + redisHost + ":" + redisPort;
+//
+//        if (redisPassword != null && !redisPassword.isEmpty())
+//            config.useSingleServer().setAddress(redisUrl).setPassword(redisPassword);
+//        else
+//            config.useSingleServer().setAddress(redisUrl);
+//
+//        return Redisson.create(config);
+//    }
+
     @Bean(destroyMethod = "shutdown")
     public RedissonClient redissonClient() {
         Config config = new Config();
-        String redisUrl = "redis://" + redisHost + ":" + redisPort;
+        String url = "redis://" + redisHost + ":" + redisPort;
 
-        if (redisPassword != null && !redisPassword.isEmpty())
-            config.useSingleServer().setAddress(redisUrl).setPassword(redisPassword);
-        else
-            config.useSingleServer().setAddress(redisUrl);
+        var server = config.useSingleServer().setAddress(url);
+
+        if (!redisPassword.isBlank())
+            server.setPassword(redisPassword);
 
         return Redisson.create(config);
     }
