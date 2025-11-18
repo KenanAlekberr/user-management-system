@@ -19,11 +19,11 @@ spring:
   liquibase:
     change-log: classpath:liquibase/changelog-master.yml
 
-#  data:
-#    redis:
-#      host: ${REDIS_HOST}
-#      port: ${REDIS_PORT}
-#      password: ${REDIS_PASSWORD:}
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD:}
 
 jwt:
   secret: ${SECRET_KEY}
