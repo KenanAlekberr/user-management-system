@@ -47,12 +47,4 @@ public class RedisConfigWithRedisson {
 
         return mapper;
     }
-
-//    @Bean
-//    public RedissonClient redissonClient() {
-//        Config config = new Config();
-//        config.useSingleServer().setAddress("redis://127.0.0.1:6379");
-//
-//        return Redisson.create(config);
-//    }
 }
