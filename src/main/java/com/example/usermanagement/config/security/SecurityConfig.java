@@ -53,28 +53,16 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(sess -> sess.sessionCreationPolicy(STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        // "/actuator/**" kifayətdir → "/actuator/health" artıqdır (SİLDİM)
                         .requestMatchers("/actuator/**").permitAll()
-
-                        // Swagger üçün lazımi endpointlər
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        // "swagger-ui.html" artıq modern Spring Boot-da yoxdur (SİLDİM)
-
-                        // Auth açıq endpointlər
                         .requestMatchers("/api/v1/auth/register",
                                 "/api/v1/auth/verify",
                                 "/api/v1/auth/login",
                                 "/api/v1/auth/forgot-password",
                                 "/api/v1/auth/reset-password").permitAll()
-
-                        // Token tələb edən auth endpointləri
                         .requestMatchers("/api/v1/auth/logout",
                                 "/api/v1/auth/change-password/**").hasAnyRole("USER", "ADMIN")
-
-                        // User ops endpointləri
                         .requestMatchers("/api/v1/user/**").hasAnyRole("USER", "ADMIN")
-
-                        // "/" path-i REST API-də lazım deyil → 404 qaytarmalıdır (SİLDİM)
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex
