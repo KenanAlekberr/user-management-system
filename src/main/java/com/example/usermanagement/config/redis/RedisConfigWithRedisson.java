@@ -22,7 +22,7 @@ public class RedisConfigWithRedisson {
     @Value("${spring.data.redis.port}")
     int redisPort;
 
-    @Value("${spring.data.redis.password:}")
+    @Value("${spring.data.redis.password}")
     String redisPassword;
 
     @Bean(destroyMethod = "shutdown")
@@ -41,11 +41,12 @@ public class RedisConfigWithRedisson {
     @Bean
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
+
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(WRITE_DATES_AS_TIMESTAMPS);
+
         return mapper;
     }
-
 
 //    @Bean
 //    public RedissonClient redissonClient() {
@@ -53,15 +54,5 @@ public class RedisConfigWithRedisson {
 //        config.useSingleServer().setAddress("redis://127.0.0.1:6379");
 //
 //        return Redisson.create(config);
-//    }
-//
-//    @Bean
-//    public ObjectMapper objectMapper() {
-//        ObjectMapper mapper = new ObjectMapper();
-//
-//        mapper.registerModule(new JavaTimeModule());
-//        mapper.disable(WRITE_DATES_AS_TIMESTAMPS);
-//
-//        return mapper;
 //    }
 }
