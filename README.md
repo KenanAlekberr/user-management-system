@@ -120,3 +120,15 @@ All paginated responses return a PaginationResponse<T> structure containing:
 - **totalElements** — Total number of users in the database
 - **totalPages** — Total pages based on the page size
 - **hasNext** — Indicates whether the next page exists
+
+___
+
+# 🌐 Deployment
+
+### The project is deployed live on Render and can be accessed here:
+
+### 🔗 Production URL:
+https://user-management-system-oyhr.onrender.com
+
+### 🔗 Swagger UI:
+https://user-management-system-oyhr.onrender.com/swagger-ui/index.html
