@@ -75,36 +75,4 @@ public class SecurityConfig {
 
         return http.build();
     }
-
-
-
-
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .sessionManagement(sess -> sess.sessionCreationPolicy(STATELESS))
-//                .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/", "/actuator/health", "/actuator/**").permitAll()
-//                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
-//                        .requestMatchers("/api/v1/auth/register",
-//                                "/api/v1/auth/verify",
-//                                "/api/v1/auth/login",
-//                                "/api/v1/auth/forgot-password",
-//                                "/api/v1/auth/reset-password").permitAll()
-//                        .requestMatchers("/api/v1/auth/logout",
-//                                "/api/v1/auth/change-password/**").hasAnyRole("USER", "ADMIN")
-//                        .requestMatchers("/api/v1/user/**").hasAnyRole("USER", "ADMIN")
-//                        .anyRequest().authenticated()
-//                )
-//                .exceptionHandling(ex -> ex
-//                        .authenticationEntryPoint((req, res, exx) ->
-//                                res.sendError(SC_UNAUTHORIZED, "Unauthorized"))
-//                        .accessDeniedHandler((req, res, exx) ->
-//                                res.sendError(SC_FORBIDDEN, "Forbidden"))
-//                )
-//                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
-//
-//        return http.build();
-//    }
 }
